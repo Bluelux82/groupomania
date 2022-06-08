@@ -126,9 +126,9 @@ exports.modify = (req, res, next) => {
                         })
                         // Update only image
                     } else if (req.body.title == "null") {
+                        console.log("Aucun titre dans le requête.")
                         const filename = results[0].image.split('/images/')[1];
                         fs.unlink(`images/${filename}`, () => { });
-                        console.log("Aucun titre dans le requête.")
                         let image = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
                         db.query("UPDATE userspost SET image = ? WHERE id = ?", [image, id], (err, results2) => {
                             if (err) {
@@ -141,6 +141,7 @@ exports.modify = (req, res, next) => {
                         })
                         // Update both
                     } else {
+                        console.log("Titre et image dans la requête.")
                         const filename = results[0].image.split('/images/')[1];
                         fs.unlink(`images/${filename}`, () => { });
                         let image = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
@@ -154,6 +155,8 @@ exports.modify = (req, res, next) => {
                             }
                         })
                     }
+                } else {
+                    res.status(401).json({ message: "Vous n'avez pas les droits pour faire cela." })
                 }
             })
         }
