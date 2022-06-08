@@ -57,7 +57,7 @@ export default {
         // Create the post html element and insert informations into it
         getOneProduct()
             .then(function (products) {
-                products.results.forEach(function (element) {
+                products.results1.forEach(function (element) {
                     console.log(element)
                     // title
                     let title = document.getElementsByTagName('h2');
