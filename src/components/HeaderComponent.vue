@@ -15,9 +15,6 @@
           <router-link class="nav-link" to="/signup">Inscription</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link notLogged" to="/user">Profil</router-link>
-        </li>
-        <li class="nav-item">
           <button type="button" id="btn" class="notLogged">Déconnexion</button>
         </li>
       </ul>
@@ -47,7 +44,6 @@ export default {
       console.log('Utilisateur pas identifié..! ')
       notLogLink[0].style.display = 'none';
       notLogLink[1].style.display = 'none';
-      notLogLink[2].style.display = 'none';
       navbar.style.width = '300px'
     }
     // On click clear the localstorage and back to login page
@@ -91,7 +87,7 @@ nav {
 
   ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 
     li {
       list-style-type: none;

@@ -9,7 +9,7 @@
                 <label for="title">Nouveau titre :</label>
                 <input type="text" name="title" id="title" placeholder="Nouveau titre de votre post..."
                     v-model="modifPostValue.title" />
-                    <!-- On change use getFile methods-->
+                <!-- On change use getFile methods-->
                 <input @change="getFile" type="file" name="file" id="uploadFile">
                 <div id="btn-container">
                     <!-- On click use publish or cancel methods-->
@@ -130,7 +130,7 @@ export default {
 }
 
 .container {
-    background-color: white;
+    background-color: #FFD7D7;
     height: 570px;
     width: 41em;
     border-radius: 7px;
@@ -174,9 +174,13 @@ export default {
             height: 25px;
             border-radius: 7px;
             outline: none;
-            border: 2px solid #2c3e50;
+            border: 2px solid #4E5166;
             padding-left: 10px;
             margin-bottom: 4px;
+        }
+
+        #title:focus {
+            border: 2px solid #fd2b01d0;
         }
 
         #uploadFile {

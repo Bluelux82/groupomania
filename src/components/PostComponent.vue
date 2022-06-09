@@ -260,22 +260,84 @@ export default {
     }
 }
 
-@media only screen and (min-width: 320px) and (max-width: 761px) {
+@media only screen and (min-width: 551px) and (max-width: 691px) {
+    #view {
+        .post {
+            form {
+                width: 80%;
+            }
+        }
+    }
+
     .card-post {
-        height: 465px;
+        height: 400px;
+        width: 80%;
+
         .post-content {
-            #likeContainer{
+            width: 90%;
+
+            img {
+                height: 250px;
+                width: 100%;
+            }
+
+            #likeContainer {
                 align-self: center;
             }
+
             #likeBtnContainer {
                 flex-direction: column;
+
                 #btnContainer {
                     margin-top: 5px;
                     align-self: center;
-                    #modify{
-                    margin-left: 0px;
-                    margin-right: 50px;
+
+                    #modify {
+                        margin-left: 0px;
+                        margin-right: 50px;
+                    }
                 }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 551px) {
+    #view {
+        .post {
+            form {
+                width: 100%;
+            }
+        }
+    }
+
+    .card-post {
+        height: 400px;
+        width: 100%;
+
+        .post-content {
+            width: 90%;
+
+            img {
+                height: 250px;
+                width: 100%;
+            }
+
+            #likeContainer {
+                align-self: center;
+            }
+
+            #likeBtnContainer {
+                flex-direction: column;
+
+                #btnContainer {
+                    margin-top: 5px;
+                    align-self: center;
+
+                    #modify {
+                        margin-left: 0px;
+                        margin-right: 50px;
+                    }
                 }
             }
         }
