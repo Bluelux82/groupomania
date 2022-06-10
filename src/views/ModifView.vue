@@ -10,6 +10,7 @@
                 <input type="text" name="title" id="title" placeholder="Nouveau titre de votre post..."
                     v-model="modifPostValue.title" />
                 <!-- On change use getFile methods-->
+                <label for="uploadFile">Nouvelle image :</label>
                 <input @change="getFile" type="file" name="file" id="uploadFile">
                 <div id="btn-container">
                     <!-- On click use publish or cancel methods-->
@@ -65,6 +66,7 @@ export default {
                     // file
                     let file = document.getElementsByTagName('img');
                     file[1].src = element.image
+                    file[1].alt = "L'image actuelle du post"
                 })
             })
     },
@@ -131,7 +133,7 @@ export default {
 
 .container {
     background-color: #FFD7D7;
-    height: 570px;
+    height: 575px;
     width: 41em;
     border-radius: 7px;
 
@@ -148,7 +150,7 @@ export default {
         }
 
         img {
-            width: 75%;
+            width: 70%;
             height: 349px;
             min-width: 400px;
         }

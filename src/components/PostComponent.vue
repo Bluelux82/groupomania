@@ -40,7 +40,12 @@ export default {
                         card.appendChild(content)
                         // Username
                         const postUsername = document.createElement('p')
-                        postUsername.innerText = '-' + ' ' + element.userName
+                        const date = element.date
+                        const years = date.split('T')
+                        console.log(years)
+                        const convertDate = new Date(date).toLocaleTimeString()
+                        console.log(convertDate)
+                        postUsername.innerText = '-' + ' ' + element.userName + " | " + years[0] + " - " + convertDate
                         content.appendChild(postUsername)
                         // Title
                         const postTitle = document.createElement('h2')
@@ -49,6 +54,7 @@ export default {
                         // File
                         const postImage = document.createElement('img')
                         postImage.src = element.image
+                        postImage.alt = "Image poster par un utilisateur"
                         content.appendChild(postImage)
                         // container for like and btn
                         const likeBtnContainer = document.createElement('div')

@@ -4,6 +4,7 @@
             <label for="title">Envie de partager un gif ? :</label>
             <input type="text" name="title" id="title" placeholder="Titre de votre post..." v-model="postValue.title">
             <!-- On change user getFile methods-->
+            <label for="uploadFile" style="margin:0px;">Choisir une image : </label>
             <input @change="getFile" type="file" name="file" id="uploadFile">
             <!-- On click use Publish methods-->
             <button @click.prevent="Publish" id="file" type="submit">Publier !</button>
@@ -32,12 +33,10 @@ export default {
         },
         // Create formData
         Publish() {
-            let date = Date.now()
             const formData = new FormData();
             // Insert title and file into fd
             formData.append("title", this.postValue.title);
             formData.append("file", this.postValue.file);
-            formData.append("date", date);
             // If title or file empty send alert
             if (formData.get("title") == "null" || formData.get("file") == "null") {
                 alert("L'un des champs lors de la création de votre post est vide.")
@@ -77,7 +76,7 @@ export default {
         flex-direction: column;
         border-radius: 5px;
         width: 80%;
-        height: 160px;
+        height: 180px;
         background-color: #FFD7D7;
 
         label {
@@ -107,7 +106,7 @@ export default {
             height: 25px;
             color: black;
             border-radius: 5px;
-            width: 235px;
+            width: 52%;
         }
         #file {
             border-radius: 5px;

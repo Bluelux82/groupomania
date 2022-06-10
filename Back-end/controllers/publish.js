@@ -14,7 +14,6 @@ const db = mysql.createConnection({
 // CREATE new post 
 exports.create = (req, res, next) => {
     let title = req.body.title; // get title from req.body
-    let date = req.body.date;
     let image = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`; // Get image from req.file
     let userId = jwtId.getId(req.headers.authorization); // get userId
     //
@@ -29,8 +28,8 @@ exports.create = (req, res, next) => {
             } else {
                 let userName = results[0].firstName;
                 // Insert all information into new post in userspost
-                db.query("INSERT INTO userspost (userName, title, image, date ,userId) VALUES (?, ?, ?, ?, ?);",
-                    [userName, title, image, date, userId],
+                db.query("INSERT INTO userspost (userName, title, image ,userId) VALUES (?, ?, ?, ?);",
+                    [userName, title, image, userId],
                     (err, results) => {
                         if (err) { console.log(err) }
                         else { res.status(201).json({ results }) }
@@ -48,6 +47,7 @@ exports.displayAll = (req, res, next) => {
             console.log(err)
         } else {
             res.status(200).json({ results })
+            console.log(results)
         }
     })
 };
