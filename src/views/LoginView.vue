@@ -93,7 +93,7 @@ export default {
           }
           // make a post request to login 
           axios.post("http://localhost:5001/api/auth/login", data)
-          // if response.ok
+            // if response.ok
             .then(response => {
               console.log("Réussite !" + response)
               // set token into localstorage
@@ -101,7 +101,10 @@ export default {
               // and replace location by Mainpage
               location.replace(location.origin)
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+              console.log(err)
+              alert(err.response.data.error)
+            });
         } else {
           console.log('Echec !')
         }
@@ -190,9 +193,11 @@ form {
     color: #FD2D01;
   }
 }
-input::placeholder{
-  color:white;
+
+input::placeholder {
+  color: white;
 }
+
 input,
 label,
 select {
@@ -231,13 +236,14 @@ select {
 .btn-connect:hover {
   cursor: pointer;
   border: 2px solid #050505;
-  background-color: #ff4e2b ;
+  background-color: #ff4e2b;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 761px) {
-  #wrapper{
+  #wrapper {
     height: 88%;
   }
+
   form {
     width: 530px;
     height: 350px;

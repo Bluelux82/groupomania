@@ -22,7 +22,7 @@ exports.create = (req, res, next) => {
             console.log(err)
             // If title and image is empty
         } else {
-            if (title == "null" || image == null) {
+            if (title === "null" || image === null) {
                 res.status(400).json({ error: "L'un des champs est vides." })
                 // If not empty
             } else {
@@ -47,7 +47,6 @@ exports.displayAll = (req, res, next) => {
             console.log(err)
         } else {
             res.status(200).json({ results })
-            console.log(results)
         }
     })
 };
@@ -64,7 +63,7 @@ exports.delete = (req, res, next) => {
             db.query("SELECT image, userId FROM userspost WHERE id = ?", postId, (err, results2) => {
                 if (err) {
                     console.log(err)
-                } else if (results[0].isAdmin == true || results2[0].userId == userId) {
+                } else if (results[0].isAdmin === 1 || results2[0].userId === userId) {
                     const filename = results2[0].image.split('/images/')[1];
                     fs.unlink(`images/${filename}`, () => { });
                     db.query("DELETE FROM userspost WHERE id = ?", postId, (err, results3) => {
@@ -90,7 +89,7 @@ exports.displayOne = (req, res, next) => {
         if (err) { console.log(err) }
         else {
             db.query("SELECT * FROM userspost WHERE id = ?", id, (err, results1) => {
-                if (results[0].isAdmin == true || results1[0].userId == userId) {
+                if (results[0].isAdmin === 1 || results1[0].userId === userId) {
                     res.status(200).json({ results1 })
                     console.log(results1)
                 } else {
@@ -111,7 +110,7 @@ exports.modify = (req, res, next) => {
         else {
             db.query("SELECT image, userId FROM userspost WHERE id = ?", id, (err, results) => {
                 if (err) { console.log(err) }
-                else if (resultsAdmin[0].isAdmin == true || results[0].userId == userId) {
+                else if (resultsAdmin[0].isAdmin === 1 || results[0].userId === userId) {
                     // Update only title
                     if (!req.file) {
                         console.log("Aucune image dans la requête.")
@@ -125,7 +124,7 @@ exports.modify = (req, res, next) => {
                             }
                         })
                         // Update only image
-                    } else if (req.body.title == "null") {
+                    } else if (req.body.title === "null") {
                         console.log("Aucun titre dans le requête.")
                         const filename = results[0].image.split('/images/')[1];
                         fs.unlink(`images/${filename}`, () => { });
