@@ -25,7 +25,3 @@
 disponible dans le dossier backend
 --
 4: Importer le fichier .sql disponible dans le dossier BD du Backend en tapant la commande suivante : mysql -u identifiant -p groupomania < sauvegarde.sql
-
-# Admin-account
-Email : admin.groupomania@hotmail.com
-Password : Admin971
